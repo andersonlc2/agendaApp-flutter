@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 
-import '../../repository/i_repository.dart';
+import '../../../repository/i_repository.dart';
 
-class TaskController extends GetxController with StateMixin {
+class ImcompController extends GetxController with StateMixin {
   final ITaskRepository _taskRepository;
 
-  TaskController(this._taskRepository);
+  ImcompController(this._taskRepository);
 
   @override
   void onInit() {
@@ -16,7 +16,7 @@ class TaskController extends GetxController with StateMixin {
   Future<void> findTasks() async {
     change([], status: RxStatus.loading());
     try {
-      final dados = await _taskRepository.findAllTasks();
+      final dados = await _taskRepository.findAllTasksIncompleted();
       change(dados, status: RxStatus.success());
     } catch (e) {
       change([], status: RxStatus.error('Error ao buscar taferas'));

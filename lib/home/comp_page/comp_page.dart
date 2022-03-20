@@ -4,55 +4,16 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:lista_tarefas/home/repository/controllers/task_controller.dart';
 import 'package:lista_tarefas/model/task_model.dart';
 
-import 'repository/controllers/incomp_controller.dart';
+import '../repository/controllers/comp_controler.dart';
 
-class HomePage extends GetView<ImcompController> {
-  const HomePage({Key? key}) : super(key: key);
+class CompPage extends GetView<CompController> {
+  const CompPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(
-        child: Container(
-          height: 200,
-          padding: EdgeInsets.zero,
-          child: Column(
-            children: <Widget>[
-              const UserAccountsDrawerHeader(
-                accountName: Text("Annonimous"),
-                accountEmail: Text("announimous@gmail.com"),
-                currentAccountPicture: CircleAvatar(
-                    child: Icon(
-                  Icons.account_circle,
-                )),
-              ),
-              ListTile(
-                  leading: const Icon(Icons.list),
-                  title: const Text("Todas tarefas"),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Get.toNamed('/all');
-                  }),
-              ListTile(
-                  leading: const Icon(Icons.indeterminate_check_box_outlined),
-                  title: const Text("Incompletas"),
-                  onTap: () {
-                    Navigator.pop(context);
-                  }),
-              ListTile(
-                  leading: const Icon(Icons.check),
-                  title: const Text("Concuídas"),
-                  onTap: () {
-                    Navigator.pop(context);
-                    Get.toNamed('/comp');
-                  }),
-            ],
-          ),
-        ),
-      ),
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text('AgendaApp'),
+        title: const Text('Todas as tarefas'),
       ),
       body: Container(
         child: Column(
@@ -112,10 +73,6 @@ class HomePage extends GetView<ImcompController> {
             )
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => Get.toNamed('/add'),
-        child: const Icon(Icons.add_task_outlined),
       ),
     );
   }
